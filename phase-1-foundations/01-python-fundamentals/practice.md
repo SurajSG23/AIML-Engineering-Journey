@@ -98,8 +98,6 @@ Common errors: wrong indent, using `is` instead of `==` for value checks.
 
 ### 6. Loops
 
-### 6. Loops
-
 `for` goes over items:
 ```python
 for i in range(5):
@@ -115,8 +113,6 @@ AI use: training epochs and dataset loops.
 ---
 
 ## SECTION 3 — Functions
-
-### 7. Functions
 
 ### 7. Functions
 
@@ -142,8 +138,6 @@ Use functions to build preprocess steps and model helpers.
 
 ### 8. Lists
 
-### 8. Lists
-
 Create: `lst = [1,2,3]`.
 Index: `lst[0]`, last: `lst[-1]`, slice: `lst[1:3]`.
 Common methods: `append`, `remove`, `pop`, `sort`.
@@ -152,8 +146,6 @@ Comprehension example: `[x*2 for x in lst if x>1]`.
 Use lists for simple collections and small datasets.
 
 ---
-
-### 9. Tuples
 
 ### 9. Tuples
 
@@ -168,14 +160,10 @@ a,b = t
 
 ### 10. Sets
 
-### 10. Sets
-
 Sets hold unique items and are unordered.
 Useful for removing duplicates and fast membership checks.
 
 ---
-
-### 11. Dictionaries
 
 ### 11. Dictionaries
 
@@ -189,16 +177,12 @@ Use dictionaries for configs, JSON, and mapping values.
 
 ## SECTION 5 — Strings
 
-## SECTION 5 — Strings
-
 Strings hold text. Common methods: `lower()`, `upper()`, `split()`, `replace()`, `strip()`.
 Use `\n` for newlines and `r"..."` for raw strings (useful with regex or Windows paths).
 
 Strings are important for NLP and building prompts.
 
 ---
-
-## SECTION 6 — File Handling
 
 ## SECTION 6 — File Handling
 
@@ -217,8 +201,6 @@ Use `csv` or `pandas.read_csv` for tables.
 Files are used to load data and save results.
 
 ---
-
-## SECTION 7 — Error Handling
 
 ## SECTION 7 — Error Handling
 
@@ -243,8 +225,6 @@ When debugging: reproduce the error, narrow it down, then fix it.
 
 ### 15. OOP Basics
 
-## SECTION 8 — Object-Oriented Programming
-
 Classes let you group data and functions together:
 ```python
 class Model:
@@ -262,8 +242,6 @@ Use OOP for models, data loaders, and reusable components.
 
 ### 16. Modules & Packages
 
-## SECTION 9 — Advanced Python Concepts
-
 Import modules with `import math` or `from module import fn`.
 Create packages using `__init__.py`. Use `pip` and `requirements.txt` to manage packages.
 
@@ -278,8 +256,6 @@ pip install -r requirements.txt
 
 ### 17. Iterators & Generators
 
-### 17. Iterators & Generators
-
 Iterators let you loop over data. Generators use `yield` to produce items one by one.
 They save memory when working with large data.
 ```python
@@ -289,8 +265,6 @@ def gen(n):
 ```
 
 ---
-
-### 18. Decorators
 
 ### 18. Decorators
 
@@ -311,15 +285,11 @@ def timer(fn):
 
 ### 19. Context Managers
 
-### 19. Context Managers
-
 Use `with` to manage resources like files or network connections. It ensures cleanup.
 
 ---
 
 ## SECTION 10 — Python for AI Engineering
-
-### 20. Clean Code Principles
 
 ### 20. Clean Code Principles
 
@@ -331,21 +301,15 @@ Avoid premature optimization. Write tests and handle errors.
 
 ### 21. Debugging Skills
 
-### 21. Debugging Skills
-
 Read the error message first. Use `print()` or `logging` to see values. Use a debugger to step through code.
 
 ---
 
 ### 22. Time Complexity Basics
 
-### 22. Time Complexity Basics
-
 Big-O shows how runtime grows with data size: `O(1)`, `O(n)`, `O(log n)`, `O(n^2)`. Performance matters for large datasets.
 
 ---
-
-## SECTION 11 — Mini Projects & Exercises
 
 ## SECTION 11 — Mini Projects & Exercises
 
@@ -379,8 +343,6 @@ def word_freq(text):
 Where Python is used: model training, inference scripts, APIs (FastAPI), data pipelines (Airflow), MLOps tools, and wrappers for research code.
 
 ---
-
-## SECTION 13 — Important Best Practices
 
 ## SECTION 13 — Important Best Practices
 
