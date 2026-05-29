@@ -84,8 +84,6 @@ rng.normal(size=(3,3))
 
 ### 5. Indexing & Slicing
 
-### 5. Indexing & Slicing
-
 Get values with indexes: `arr[i]` or `arr[i,j]` for 2D.
 Use `arr[-1]` for the last item. Slice with `arr[1:4]` or `arr[:, :2]`.
 
@@ -95,9 +93,7 @@ Use indexing to pick batches or time windows.
 
 ---
 
-### 6. Reshaping Arrays
-
-### 6. Reshaping Arrays
+- ### 6. Reshaping Arrays
 
 - `reshape(new_shape)` changes the view of data without copying when possible.
 - `flatten()` gives a copy of data as 1D.
@@ -107,8 +103,6 @@ Use indexing to pick batches or time windows.
 Shapes must match what functions expect (e.g., `[batch, features]`).
 
 ---
-
-### 7. Array Mathematics
 
 ### 7. Array Mathematics
 
@@ -125,16 +119,12 @@ Always prefer vectorized ops over Python loops for big speed gains.
 
 ### 8. Statistical Functions
 
-### 8. Statistical Functions
-
 Common stats: `np.mean`, `np.median`, `np.std`, `np.var`, `np.sum`, `np.min`, `np.max`.
 Use `np.percentile` or `np.quantile` for percentiles.
 
 These help compute normalization and summaries for datasets.
 
 ---
-
-### 9. Aggregation Functions
 
 ### 9. Aggregation Functions
 
@@ -154,8 +144,6 @@ Check shapes when using axis to avoid mistakes.
 
 ### 10. Matrix Fundamentals
 
-### 10. Matrix Fundamentals
-
 Matrix multiply: `np.dot(A, B)` or `A @ B`.
 Elementwise multiply is `A * B`.
 
@@ -170,8 +158,6 @@ C = A @ B
 
 ### 11. Linear Algebra with NumPy
 
-### 11. Linear Algebra with NumPy
-
 Find inverse, determinant, eigenvalues via `np.linalg` (e.g., `np.linalg.inv`, `np.linalg.eig`).
 Prefer `np.linalg.solve(A, b)` over `inv(A) @ b` for stability.
 
@@ -180,8 +166,6 @@ Linear algebra is the math behind many ML methods.
 ---
 
 ## SECTION 5 — Broadcasting
-
-### 12. Broadcasting
 
 ### 12. Broadcasting
 
@@ -202,8 +186,6 @@ Broadcasting keeps code short and fast. Check shapes to avoid surprises.
 
 ### 13. Stacking Arrays
 
-### 13. Stacking Arrays
-
 Combine arrays with `np.hstack`, `np.vstack`, `np.concatenate`, or `np.stack`.
 
 Example:
@@ -213,8 +195,6 @@ np.concatenate([a, b], axis=0)
 ```
 
 ---
-
-### 14. Filtering Arrays
 
 ### 14. Filtering Arrays
 
@@ -233,8 +213,6 @@ Use masking to clean or filter data.
 
 ### 15. Sorting & Searching
 
-### 15. Sorting & Searching
-
 Useful functions: `np.sort`, `np.argsort`, `np.unique`, `np.searchsorted`, `np.argmax`, `np.argmin`.
 
 Use these for top-k selection, thresholds, and deduplication.
@@ -242,8 +220,6 @@ Use these for top-k selection, thresholds, and deduplication.
 ---
 
 ## SECTION 7 — Random Numbers
-
-### 16. Random Module
 
 ### 16. Random Module
 
@@ -262,13 +238,9 @@ Set a seed so experiments can be repeated. Randomness is used for shuffling and 
 
 ### 17. Why NumPy is Fast
 
-### 17. Why NumPy is Fast
-
 NumPy runs math in C, not Python. This makes it much faster. It also uses memory efficiently and links to fast math libraries.
 
 Measure speed with `timeit`.
-
-### 18. Memory Optimization
 
 ### 18. Memory Optimization
 
@@ -279,8 +251,6 @@ Avoid extra copies and keep data types (`dtype`) consistent to save memory.
 ---
 
 ## SECTION 9 — NumPy for Machine Learning
-
-### 19. Feature Matrices
 
 ### 19. Feature Matrices
 
@@ -308,21 +278,13 @@ X_norm = (X - mean) / (std + 1e-8)
 
 ### 22. Clean NumPy Coding
 
-
-### 22. Clean NumPy Coding
-
 Use clear names like `X`, `y`, `weights`. Prefer vectorized operations over loops. Pick `float32` or `float64` according to memory and precision needs.
-
-### 23. Common Beginner Mistakes
-
 
 ### 23. Common Beginner Mistakes
 
 Check `shape` often. Watch broadcasting rules. Use `.copy()` when you need a separate array.
 
 ---
-
-## SECTION 11 — Mini Projects
 
 ## SECTION 11 — Mini Projects
 
