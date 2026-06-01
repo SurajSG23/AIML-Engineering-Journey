@@ -1,24 +1,4 @@
-# Statistics for AI Engineering
-
-Statistics Every AI Engineer Must Know.
-
-This repository is a practical handbook for AI engineers, not a statistics course. It focuses on the ideas that help you understand data, spot dataset problems, build better models, and make better decisions with uncertainty.
-
-The learning mindset is:
-
-Understand Data
-	↓
-Understand Patterns
-	↓
-Understand Uncertainty
-	↓
-Understand Relationships
-	↓
-Make Better Decisions
-	↓
-Build Better Models
-
----
+# Statistics
 
 ## Introduction
 
