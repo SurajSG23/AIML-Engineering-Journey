@@ -1,377 +1,1248 @@
-# Python Fundamentals Practice
+# Python Fundamentals
 
-## Overview
-Simple, practical Python notes for AI engineering. Short explanations, small examples, and clear tips to help you learn and apply Python quickly.
+> Python is one of the most popular programming languages in the world.
+>
+> It is widely used in:
+>
+> * Artificial Intelligence
+> * Machine Learning
+> * Data Science
+> * Web Development
+> * Automation
+> * Cybersecurity
+>
+> In this guide, we will learn Python from scratch.
 
 ---
 
-## 1. Introduction to Python
+# Why Learn Python?
 
-- What is Python: A simple, popular programming language used for many tasks.
-- Why Python for AI/ML: Many ready-made libraries (NumPy, Pandas, PyTorch) and fast to test ideas.
-- Real-world AI uses: image recognition, language tools, recommendations, and model servers.
-- Ecosystem: built-in modules, packages from PyPI, and many tools for data and ML.
+Python is:
 
----
+* Easy to read
+* Easy to write
+* Beginner friendly
+* Powerful
+* Widely used in industry
 
-## SECTION 1 — Python Basics
+Example:
 
-### 2. Variables & Data Types
-
-Variables store data. Python lets you change a variable to hold any type.
-
-Variables:
-- Assign: `x = 10`
-- Names: use letters, numbers, and `_`. Don't start with a number.
-- Dynamic typing: `x = 3` then `x = "text"` is allowed.
-
-Common types: `int`, `float`, `str`, `bool`, `NoneType`.
-
-Check or convert types:
 ```python
-type(3)        # int
-int('3')       # 3
-float('3.1')   # 3.1
-str(10)        # '10'
+print("Hello World")
 ```
 
-Watch out:
-- `=` sets a value, `==` compares values.
-- Lists change in place (mutable); tuples do not (immutable).
+Output:
 
-Good habits:
-- Use clear names and follow style guides.
+```text
+Hello World
+```
 
-AI tip:
-- Pick the right numeric type (`float32` vs `float64`) to save memory and speed up training.
+Simple and readable.
 
 ---
 
-### 3. Input & Output
+# Running Python
 
-Output and input are simple.
-- `print()` shows values on screen.
-- `input()` reads text from the user.
+Create a file:
 
-Format strings:
-- f-strings (easy): `f"{name} is {age}"`
-- `format()` works too: `"{} {}".format(a,b)`
+```text
+main.py
+```
 
-For quick checks use `print()`. For real code use `logging`.
+Write:
 
-Use cases: show training steps, print metrics, save small logs.
-
----
-
-### 4. Operators
-
-Operators perform math and checks.
-- Arithmetic: `+ - * / // % **`
-- Compare: `== != > <`
-- Logic: `and, or, not`
-- Membership: `in, not in`
-- Identity: `is, is not`
-
-Use parentheses to make expressions clear.
-
-AI use: conditions, filters, math for loss and metrics.
-
----
-
-## SECTION 2 — Control Flow
-
-### 5. Conditional Statements
-
-Use `if`, `elif`, and `else` to pick code paths.
 ```python
-if x > 0:
-    print('positive')
-elif x == 0:
-    print('zero')
+print("Hello World")
+```
+
+Run:
+
+```bash
+python main.py
+```
+
+---
+
+# Variables
+
+Variables store data.
+
+Example:
+
+```python
+name = "Suraj"
+age = 21
+```
+
+Think of a variable as a labeled box.
+
+```text
+name → "Suraj"
+
+age → 21
+```
+
+---
+
+# Rules for Variable Names
+
+Valid:
+
+```python
+student_name = "Suraj"
+age = 21
+_marks = 90
+```
+
+Invalid:
+
+```python
+2name = "Suraj"
+student-name = "Suraj"
+```
+
+---
+
+# Data Types
+
+Everything in Python has a type.
+
+---
+
+## Integer (int)
+
+Whole numbers.
+
+```python
+age = 21
+```
+
+Examples:
+
+```python
+10
+20
+100
+-5
+```
+
+---
+
+## Float (float)
+
+Decimal numbers.
+
+```python
+height = 175.5
+```
+
+Examples:
+
+```python
+3.14
+2.5
+100.99
+```
+
+---
+
+## String (str)
+
+Text data.
+
+```python
+name = "Suraj"
+```
+
+Examples:
+
+```python
+"Hello"
+"Python"
+"Germany"
+```
+
+---
+
+## Boolean (bool)
+
+Represents True or False.
+
+```python
+is_student = True
+```
+
+Examples:
+
+```python
+True
+False
+```
+
+---
+
+# Checking Data Type
+
+Use:
+
+```python
+type(value)
+```
+
+Example:
+
+```python
+print(type(21))
+```
+
+Output:
+
+```text
+<class 'int'>
+```
+
+---
+
+# Taking User Input
+
+```python
+name = input("Enter your name: ")
+
+print(name)
+```
+
+Example:
+
+```text
+Enter your name: Suraj
+
+Suraj
+```
+
+---
+
+# Type Conversion
+
+Input always returns a string.
+
+Convert when needed.
+
+---
+
+String to Integer
+
+```python
+age = int(input("Enter age: "))
+```
+
+---
+
+String to Float
+
+```python
+salary = float(input("Enter salary: "))
+```
+
+---
+
+Integer to String
+
+```python
+age = 21
+
+print(str(age))
+```
+
+---
+
+# Output
+
+Display information using:
+
+```python
+print()
+```
+
+Example:
+
+```python
+print("Hello")
+```
+
+---
+
+Multiple Values
+
+```python
+name = "Suraj"
+age = 21
+
+print(name, age)
+```
+
+Output:
+
+```text
+Suraj 21
+```
+
+---
+
+# Arithmetic Operators
+
+```python
+a = 10
+b = 3
+```
+
+Addition:
+
+```python
+a + b
+```
+
+Output:
+
+```text
+13
+```
+
+---
+
+Subtraction:
+
+```python
+a - b
+```
+
+---
+
+Multiplication:
+
+```python
+a * b
+```
+
+---
+
+Division:
+
+```python
+a / b
+```
+
+Output:
+
+```text
+3.3333...
+```
+
+---
+
+Floor Division
+
+```python
+a // b
+```
+
+Output:
+
+```text
+3
+```
+
+---
+
+Modulus
+
+Returns remainder.
+
+```python
+a % b
+```
+
+Output:
+
+```text
+1
+```
+
+---
+
+Power
+
+```python
+a ** b
+```
+
+Output:
+
+```text
+1000
+```
+
+---
+
+# Comparison Operators
+
+Used to compare values.
+
+```python
+10 == 10
+```
+
+Output:
+
+```text
+True
+```
+
+---
+
+```python
+10 != 5
+```
+
+Output:
+
+```text
+True
+```
+
+---
+
+```python
+10 > 5
+```
+
+Output:
+
+```text
+True
+```
+
+---
+
+```python
+10 < 5
+```
+
+Output:
+
+```text
+False
+```
+
+---
+
+```python
+10 >= 10
+```
+
+Output:
+
+```text
+True
+```
+
+---
+
+```python
+10 <= 8
+```
+
+Output:
+
+```text
+False
+```
+
+---
+
+# Logical Operators
+
+Combine conditions.
+
+---
+
+## and
+
+Both conditions must be true.
+
+```python
+age = 21
+
+age > 18 and age < 30
+```
+
+Output:
+
+```text
+True
+```
+
+---
+
+## or
+
+At least one condition must be true.
+
+```python
+10 > 20 or 5 < 10
+```
+
+Output:
+
+```text
+True
+```
+
+---
+
+## not
+
+Reverses result.
+
+```python
+not True
+```
+
+Output:
+
+```text
+False
+```
+
+---
+
+# Conditional Statements
+
+Programs often make decisions.
+
+---
+
+## if
+
+```python
+age = 20
+
+if age >= 18:
+    print("Adult")
+```
+
+---
+
+## if-else
+
+```python
+age = 16
+
+if age >= 18:
+    print("Adult")
 else:
-    print('negative')
+    print("Minor")
 ```
-
-Common errors: wrong indent, using `is` instead of `==` for value checks.
 
 ---
 
-### 6. Loops
+## if-elif-else
 
-`for` goes over items:
+```python
+marks = 85
+
+if marks >= 90:
+    print("A")
+
+elif marks >= 75:
+    print("B")
+
+else:
+    print("C")
+```
+
+---
+
+# Loops
+
+Loops repeat code.
+
+---
+
+# for Loop
+
 ```python
 for i in range(5):
-	print(i)
+    print(i)
 ```
 
-`while` repeats while a condition is true. Use `break` to stop early.
+Output:
 
-Use `pass` as a placeholder. Avoid infinite loops.
-
-AI use: training epochs and dataset loops.
+```text
+0
+1
+2
+3
+4
+```
 
 ---
 
-## SECTION 3 — Functions
+# while Loop
 
-### 7. Functions
-
-Functions group code to reuse it.
 ```python
-def add(a, b=0):
-	return a + b
+count = 0
 
-add(2, 3)
+while count < 5:
+    print(count)
+    count += 1
 ```
 
-You can use defaults, positional and keyword arguments, `*args`, and `**kwargs`.
-
-Lambdas are short functions: `square = lambda x: x*x`.
-
-Keep functions short and focused. Return values instead of using globals.
-
-Use functions to build preprocess steps and model helpers.
-
 ---
 
-## SECTION 4 — Data Structures
+# break
 
-### 8. Lists
+Stops loop.
 
-Create: `lst = [1,2,3]`.
-Index: `lst[0]`, last: `lst[-1]`, slice: `lst[1:3]`.
-Common methods: `append`, `remove`, `pop`, `sort`.
-Comprehension example: `[x*2 for x in lst if x>1]`.
-
-Use lists for simple collections and small datasets.
-
----
-
-### 9. Tuples
-
-Tuples are like lists but cannot change (immutable).
-Use them for fixed groups of values.
 ```python
-t = (1,2)
-a,b = t
+for i in range(10):
+
+    if i == 5:
+        break
+
+    print(i)
+```
+
+Output:
+
+```text
+0
+1
+2
+3
+4
 ```
 
 ---
 
-### 10. Sets
+# continue
 
-Sets hold unique items and are unordered.
-Useful for removing duplicates and fast membership checks.
+Skips current iteration.
 
----
-
-### 11. Dictionaries
-
-Dictionaries store data as key:value pairs.
-Create: `d = {'a':1}`. Access: `d['a']` or `d.get('a', 0)`.
-Useful methods: `keys()`, `values()`, `items()`, `update()`.
-
-Use dictionaries for configs, JSON, and mapping values.
-
----
-
-## SECTION 5 — Strings
-
-Strings hold text. Common methods: `lower()`, `upper()`, `split()`, `replace()`, `strip()`.
-Use `\n` for newlines and `r"..."` for raw strings (useful with regex or Windows paths).
-
-Strings are important for NLP and building prompts.
-
----
-
-## SECTION 6 — File Handling
-
-Read and write files with `open()` and `with`:
 ```python
-with open('data.txt', 'r', encoding='utf-8') as f:
-	text = f.read()
+for i in range(5):
 
-with open('out.csv', 'w', encoding='utf-8') as f:
-	f.write('col1,col2\n')
+    if i == 2:
+        continue
+
+    print(i)
 ```
 
-Common modes: `r` (read), `w` (write), `a` (append), `rb` (read binary).
-Use `csv` or `pandas.read_csv` for tables.
+Output:
 
-Files are used to load data and save results.
+```text
+0
+1
+3
+4
+```
 
 ---
 
-## SECTION 7 — Error Handling
+# Strings
 
-Use `try/except` to catch errors and keep the program running:
+Strings store text.
+
+```python
+name = "Suraj"
+```
+
+---
+
+Length
+
+```python
+len(name)
+```
+
+Output:
+
+```text
+5
+```
+
+---
+
+Uppercase
+
+```python
+name.upper()
+```
+
+Output:
+
+```text
+SURAJ
+```
+
+---
+
+Lowercase
+
+```python
+name.lower()
+```
+
+---
+
+Replace
+
+```python
+name.replace("Suraj","Rahul")
+```
+
+---
+
+Split
+
+```python
+"apple,banana".split(",")
+```
+
+Output:
+
+```python
+['apple', 'banana']
+```
+
+---
+
+# Lists
+
+Lists store multiple values.
+
+```python
+fruits = ["apple","banana","mango"]
+```
+
+---
+
+Access Elements
+
+```python
+fruits[0]
+```
+
+Output:
+
+```text
+apple
+```
+
+---
+
+Last Element
+
+```python
+fruits[-1]
+```
+
+---
+
+Add Item
+
+```python
+fruits.append("orange")
+```
+
+---
+
+Remove Item
+
+```python
+fruits.remove("banana")
+```
+
+---
+
+Length
+
+```python
+len(fruits)
+```
+
+---
+
+Loop Through List
+
+```python
+for fruit in fruits:
+    print(fruit)
+```
+
+---
+
+# Tuples
+
+Tuples are like lists but cannot be changed.
+
+```python
+numbers = (1,2,3)
+```
+
+Why use tuples?
+
+* Safer
+* Faster
+* Immutable
+
+---
+
+# Sets
+
+Store unique values.
+
+```python
+nums = {1,2,3,3,3}
+```
+
+Output:
+
+```text
+{1,2,3}
+```
+
+Duplicates are removed.
+
+---
+
+Add Element
+
+```python
+nums.add(4)
+```
+
+---
+
+# Dictionaries
+
+Store data as key-value pairs.
+
+```python
+student = {
+    "name":"Suraj",
+    "age":21
+}
+```
+
+---
+
+Access Value
+
+```python
+student["name"]
+```
+
+Output:
+
+```text
+Suraj
+```
+
+---
+
+Add Value
+
+```python
+student["city"] = "Mysuru"
+```
+
+---
+
+Loop Through Dictionary
+
+```python
+for key, value in student.items():
+    print(key, value)
+```
+
+---
+
+# Functions
+
+Functions help reuse code.
+
+---
+
+Creating Function
+
+```python
+def greet():
+
+    print("Hello")
+```
+
+Call Function:
+
+```python
+greet()
+```
+
+---
+
+Function with Parameters
+
+```python
+def greet(name):
+
+    print("Hello", name)
+```
+
+Usage:
+
+```python
+greet("Suraj")
+```
+
+---
+
+Return Values
+
+```python
+def add(a,b):
+
+    return a+b
+```
+
+Usage:
+
+```python
+result = add(10,20)
+
+print(result)
+```
+
+Output:
+
+```text
+30
+```
+
+---
+
+# Exception Handling
+
+Programs can crash.
+
+Exceptions help handle errors.
+
+---
+
+Example
+
 ```python
 try:
-	risky()
-except ValueError as e:
-	handle(e)
-finally:
-	cleanup()
+
+    num = int(input())
+
+except:
+
+    print("Invalid Input")
 ```
-
-Raise errors with `raise ValueError('msg')`.
-Common errors: `ValueError`, `TypeError`, `IndexError`, `KeyError`.
-
-When debugging: reproduce the error, narrow it down, then fix it.
 
 ---
 
-## SECTION 8 — Object-Oriented Programming
+Better Version
 
-### 15. OOP Basics
-
-Classes let you group data and functions together:
 ```python
-class Model:
-	def __init__(self, name):
-		self.name = name
-	def predict(self, x):
-		return x
-```
+try:
 
-Use OOP for models, data loaders, and reusable components.
+    num = int(input())
 
----
+except ValueError:
 
-## SECTION 9 — Advanced Python Concepts
-
-### 16. Modules & Packages
-
-Import modules with `import math` or `from module import fn`.
-Create packages using `__init__.py`. Use `pip` and `requirements.txt` to manage packages.
-
-Quick virtual environment setup:
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+    print("Enter a valid number")
 ```
 
 ---
 
-### 17. Iterators & Generators
+# Modules
 
-Iterators let you loop over data. Generators use `yield` to produce items one by one.
-They save memory when working with large data.
+Modules contain reusable code.
+
+---
+
+Import Math Module
+
 ```python
-def gen(n):
-	for i in range(n):
-		yield i*i
+import math
 ```
 
----
+Square Root:
 
-### 18. Decorators
-
-Decorators let you add code before or after a function runs.
-They are useful for timing, logging, or caching.
 ```python
-def timer(fn):
-	def wrapper(*a, **k):
-		import time
-		t0 = time.time()
-		r = fn(*a, **k)
-		print(time.time()-t0)
-		return r
-	return wrapper
+math.sqrt(25)
+```
+
+Output:
+
+```text
+5
 ```
 
 ---
 
-### 19. Context Managers
+Random Number
 
-Use `with` to manage resources like files or network connections. It ensures cleanup.
-
----
-
-## SECTION 10 — Python for AI Engineering
-
-### 20. Clean Code Principles
-
-Use `snake_case` for functions and variables, `CamelCase` for classes. Keep functions short and clear. Don't repeat code.
-
-Avoid premature optimization. Write tests and handle errors.
-
----
-
-### 21. Debugging Skills
-
-Read the error message first. Use `print()` or `logging` to see values. Use a debugger to step through code.
-
----
-
-### 22. Time Complexity Basics
-
-Big-O shows how runtime grows with data size: `O(1)`, `O(n)`, `O(log n)`, `O(n^2)`. Performance matters for large datasets.
-
----
-
-## SECTION 11 — Mini Projects & Exercises
-
-Beginner ideas:
-- Calculator CLI
-- CSV analyzer (basic stats)
-- Quiz app using JSON
-
-Intermediate:
-- Student management system
-- Simple rule-based chatbot
-
-AI-focused:
-- Text cleaner (lowercase, remove punctuation)
-- Dataset analyzer (missing values, simple plots)
-
-Quick example (word counts):
 ```python
-from collections import Counter
-import re
+import random
 
-def word_freq(text):
-	tokens = re.findall(r"\w+", text.lower())
-	return Counter(tokens)
+random.randint(1,10)
 ```
 
 ---
 
-## SECTION 12 — Python in Real AI Systems
+# File Handling
 
-Where Python is used: model training, inference scripts, APIs (FastAPI), data pipelines (Airflow), MLOps tools, and wrappers for research code.
+Write File:
 
----
-
-## SECTION 13 — Important Best Practices
-
-DO:
-- write readable code
-- use functions
-- handle errors
-- write tests and docstrings
-
-DON'T:
-- hardcode secrets
-- use meaningless names
-- ignore exceptions
-
----
-
-## SECTION 14 — Revision Cheatsheet
-
-Most important concepts: variables, loops, functions, lists, dictionaries, file handling, OOP.
-
-Most used built-ins:
 ```python
-len(), type(), range(), print(), input(), sum(), max(), min()
+file = open("data.txt","w")
+
+file.write("Hello")
+
+file.close()
 ```
 
 ---
 
-## SECTION 15 — AI Engineering Connection
+Read File:
 
-Python connects to the AI stack via `NumPy`, `Pandas`, `scikit-learn`, `PyTorch`, `TensorFlow`, `FastAPI`, and containerization with Docker. Learn how data flows from raw files → preprocessing → model → deployment.
+```python
+file = open("data.txt","r")
+
+print(file.read())
+
+file.close()
+```
 
 ---
+
+Recommended Method
+
+```python
+with open("data.txt","r") as file:
+
+    print(file.read())
+```
+
+Automatically closes file.
+
+---
+
+# List Comprehension
+
+A Pythonic way to create lists.
+
+Traditional:
+
+```python
+numbers = []
+
+for i in range(5):
+    numbers.append(i)
+```
+
+---
+
+Better:
+
+```python
+numbers = [i for i in range(5)]
+```
+
+Output:
+
+```python
+[0,1,2,3,4]
+```
+
+---
+
+# Useful Built-in Functions
+
+Length:
+
+```python
+len()
+```
+
+---
+
+Maximum:
+
+```python
+max()
+```
+
+---
+
+Minimum:
+
+```python
+min()
+```
+
+---
+
+Sum:
+
+```python
+sum()
+```
+
+---
+
+Sorted:
+
+```python
+sorted()
+```
+
+---
+
+# Python for AI and ML
+
+Before learning:
+
+* NumPy
+* Pandas
+* Scikit-Learn
+* PyTorch
+* TensorFlow
+
+You must be comfortable with:
+
+* Variables
+* Functions
+* Loops
+* Lists
+* Dictionaries
+* File Handling
+
+These appear everywhere in AI projects.
+
+---
+
+# Common Beginner Mistakes
+
+## Forgetting Indentation
+
+Wrong:
+
+```python
+if True:
+print("Hello")
+```
+
+Correct:
+
+```python
+if True:
+    print("Hello")
+```
+
+---
+
+## Confusing = and ==
+
+Assignment:
+
+```python
+age = 21
+```
+
+Comparison:
+
+```python
+age == 21
+```
+
+---
+
+## Modifying Tuple Values
+
+```python
+numbers = (1,2,3)
+
+numbers[0] = 10
+```
+
+Error.
+
+Tuples are immutable.
+
+---
+
+## Infinite While Loops
+
+Wrong:
+
+```python
+while True:
+    print("Hello")
+```
+
+Be careful.
+
+---
+
+# Mini Project
+
+Student Grade Checker
+
+```python
+name = input("Enter Name: ")
+
+marks = int(input("Enter Marks: "))
+
+if marks >= 90:
+    grade = "A"
+
+elif marks >= 75:
+    grade = "B"
+
+elif marks >= 60:
+    grade = "C"
+
+else:
+    grade = "D"
+
+print(name)
+print("Grade:", grade)
+```
+
+---
+
+# Final Thoughts
+
+Python is the foundation of your AI/ML journey.
+
+Recommended order:
+
+```text
+Python Fundamentals
+        ↓
+NumPy
+        ↓
+Pandas
+        ↓
+Matplotlib
+        ↓
+Statistics
+        ↓
+Machine Learning
+        ↓
+Deep Learning
+```
+
+Master Python first. Every other library becomes much easier once the fundamentals are strong.
