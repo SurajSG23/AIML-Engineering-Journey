@@ -1,329 +1,1005 @@
-# NumPy
+# NumPy Complete Guide
 
-## Overview
-Short, practical NumPy notes for AI. Simple explanations, small examples, and clear tips to help with data and math tasks.
-
----
-
-## 1. Introduction to NumPy
-
-- What is NumPy: a foundational numeric library for Python providing fast array operations and linear algebra tools.
-- Why NumPy was created: to provide efficient, vectorized operations on homogeneous numeric data backed by C implementations.
-- Why NumPy is faster than Python lists: contiguous memory, contiguous C loops, SIMD-friendly operations, and fewer Python-level loops.
-- NumPy's role in AI/ML: base for tensors, numerical routines, and as the backbone for higher-level libraries (Pandas, scikit-learn, PyTorch/TF interoperability).
-- Real-world applications: image processing, signal processing, scientific computing, feature preprocessing, batch operations in training.
+> NumPy (Numerical Python) is the foundation of scientific computing in Python.
+>
+> Most Data Science, Machine Learning, Deep Learning, and AI libraries are built on top of NumPy.
+>
+> If Pandas is used to work with datasets, NumPy is used to work with numbers efficiently.
 
 ---
 
-## SECTION 1 — NumPy Foundations
+# What is NumPy?
 
-### 2. Understanding Arrays
+NumPy is a Python library used for:
 
-What is an array?
-- A grid of numbers with the same type (like a matrix). It can have many dimensions.
+* Fast numerical computations
+* Working with arrays
+* Mathematical operations
+* Linear Algebra
+* Statistics
+* Machine Learning
 
-Why use arrays?
-- They let you do math on many numbers at once (fast and memory-friendly).
+Import NumPy:
 
-Lists vs arrays:
-- Lists are flexible but slow for math. Arrays are fast and use less memory.
-
-Create an array:
 ```python
 import numpy as np
-arr = np.array([1, 2, 3])
 ```
 
-Shapes and dims:
-- 1D is a list of numbers, 2D is rows and columns, 3D+ are tensors (like image batches).
-- `arr.shape` tells the size of each dimension.
-
-AI note: features, labels, and weights are usually NumPy arrays.
+The alias `np` is the standard convention used worldwide.
 
 ---
 
-### 3. Array Attributes
+# Why NumPy Exists
 
-Common attributes:
-- `shape`: size of each axis
-- `ndim`: number of axes
-- `size`: total elements
-- `dtype`: element type (e.g., `float32`)
-- `itemsize`: bytes per element
+Suppose we have a list:
 
-Memory layout matters for speed. Some arrays are C-contiguous; others are not.
+```python
+numbers = [1, 2, 3, 4, 5]
+```
+
+Python lists are flexible but not optimized for numerical computations.
+
+NumPy arrays are:
+
+* Faster
+* More memory efficient
+* Easier to perform mathematical operations on
+
+---
+
+# Creating Arrays
+
+## 1D Array
+
+```python
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+print(arr)
+```
+
+Output:
+
+```python
+[1 2 3 4 5]
+```
+
+Think of this as:
+
+```text
+[1 2 3 4 5]
+```
+
+---
+
+## 2D Array
+
+```python
+arr = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+print(arr)
+```
+
+Output:
+
+```text
+[[1 2 3]
+ [4 5 6]]
+```
+
+Think of it as a table:
+
+```text
+1 2 3
+4 5 6
+```
+
+---
+
+## 3D Array
+
+```python
+arr = np.array([
+    [
+        [1,2],
+        [3,4]
+    ],
+    [
+        [5,6],
+        [7,8]
+    ]
+])
+```
+
+Used in:
+
+* Images
+* Videos
+* Deep Learning
+
+---
+
+# Understanding Dimensions
+
+Check dimensions:
+
+```python
+arr.ndim
+```
 
 Example:
+
 ```python
-a = np.arange(12).reshape(3,4)
-print(a.shape, a.ndim, a.size, a.dtype)
+np.array([1,2,3]).ndim
+```
+
+Output:
+
+```python
+1
 ```
 
 ---
 
-### 4. Creating Arrays
+Check shape:
 
-Create arrays:
-- `np.array()` from lists
-- `np.zeros((m,n))`, `np.ones((m,n))`, `np.empty((m,n))`
-- `np.arange()` and `np.linspace()` for ranges
-- Use `np.random.default_rng()` for random numbers
-- Identity: `np.eye(n)`
+```python
+arr.shape
+```
+
+Example:
+
+```python
+(2,3)
+```
+
+Meaning:
+
+```text
+2 rows
+3 columns
+```
+
+---
+
+Check total elements:
+
+```python
+arr.size
+```
+
+---
+
+Check data type:
+
+```python
+arr.dtype
+```
+
+Output:
+
+```python
+int64
+```
+
+---
+
+# Creating Special Arrays
+
+## Zeros
+
+```python
+np.zeros((3,3))
+```
+
+Output:
+
+```text
+[[0. 0. 0.]
+ [0. 0. 0.]
+ [0. 0. 0.]]
+```
+
+---
+
+## Ones
+
+```python
+np.ones((2,2))
+```
+
+---
+
+## Full
+
+```python
+np.full((3,3), 5)
+```
+
+Output:
+
+```text
+[[5 5 5]
+ [5 5 5]
+ [5 5 5]]
+```
+
+---
+
+## Identity Matrix
+
+```python
+np.eye(3)
+```
+
+Output:
+
+```text
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+```
+
+Used heavily in Linear Algebra.
+
+---
+
+# Creating Sequences
+
+## arange()
+
+Works like Python range.
+
+```python
+np.arange(0,10)
+```
+
+Output:
+
+```text
+[0 1 2 3 4 5 6 7 8 9]
+```
+
+---
+
+Step size:
+
+```python
+np.arange(0,20,2)
+```
+
+Output:
+
+```text
+[0 2 4 6 8 10 12 14 16 18]
+```
+
+---
+
+## linspace()
+
+Creates evenly spaced numbers.
+
+```python
+np.linspace(0,10,5)
+```
+
+Output:
+
+```text
+[0. 2.5 5. 7.5 10.]
+```
+
+Useful for plotting graphs.
+
+---
+
+# Array Indexing
+
+```python
+arr = np.array([10,20,30,40])
+```
+
+First element:
+
+```python
+arr[0]
+```
+
+Output:
+
+```python
+10
+```
+
+---
+
+Last element:
+
+```python
+arr[-1]
+```
+
+Output:
+
+```python
+40
+```
+
+---
+
+# Slicing
+
+```python
+arr[1:4]
+```
+
+Output:
+
+```python
+[20 30 40]
+```
+
+---
+
+# Indexing 2D Arrays
+
+```python
+arr = np.array([
+    [1,2,3],
+    [4,5,6]
+])
+```
+
+Access:
+
+```python
+arr[0,1]
+```
+
+Output:
+
+```python
+2
+```
+
+Meaning:
+
+```text
+Row 0
+Column 1
+```
+
+---
+
+# Array Operations
+
+NumPy supports vectorized operations.
+
+---
+
+Addition
+
+```python
+arr + 10
+```
+
+Output:
+
+```python
+[11 12 13]
+```
+
+---
+
+Multiplication
+
+```python
+arr * 2
+```
+
+Output:
+
+```python
+[2 4 6]
+```
+
+---
+
+Division
+
+```python
+arr / 2
+```
+
+---
+
+Power
+
+```python
+arr ** 2
+```
+
+Output:
+
+```python
+[1 4 9]
+```
+
+---
+
+# Why NumPy is Powerful
+
+Without NumPy:
+
+```python
+result = []
+
+for x in numbers:
+    result.append(x * 2)
+```
+
+With NumPy:
+
+```python
+arr * 2
+```
+
+Cleaner and much faster.
+
+---
+
+# Mathematical Functions
+
+## Sum
+
+```python
+np.sum(arr)
+```
+
+---
+
+## Mean
+
+```python
+np.mean(arr)
+```
+
+---
+
+## Median
+
+```python
+np.median(arr)
+```
+
+---
+
+## Standard Deviation
+
+```python
+np.std(arr)
+```
+
+---
+
+## Variance
+
+```python
+np.var(arr)
+```
+
+---
+
+## Minimum
+
+```python
+np.min(arr)
+```
+
+---
+
+## Maximum
+
+```python
+np.max(arr)
+```
+
+---
+
+# Reshaping Arrays
+
+Original:
+
+```python
+arr = np.array([1,2,3,4,5,6])
+```
+
+Shape:
+
+```text
+(6,)
+```
+
+---
+
+Convert to matrix:
+
+```python
+arr.reshape(2,3)
+```
+
+Output:
+
+```text
+[[1 2 3]
+ [4 5 6]]
+```
+
+---
+
+Convert to:
+
+```python
+arr.reshape(3,2)
+```
+
+Output:
+
+```text
+[[1 2]
+ [3 4]
+ [5 6]]
+```
+
+---
+
+# Flattening Arrays
+
+Convert matrix into one row.
+
+```python
+arr.flatten()
+```
+
+Output:
+
+```text
+[1 2 3 4 5 6]
+```
+
+---
+
+# Combining Arrays
+
+## Horizontal Stack
+
+```python
+a = np.array([1,2,3])
+b = np.array([4,5,6])
+
+np.hstack((a,b))
+```
+
+Output:
+
+```text
+[1 2 3 4 5 6]
+```
+
+---
+
+## Vertical Stack
+
+```python
+np.vstack((a,b))
+```
+
+Output:
+
+```text
+[[1 2 3]
+ [4 5 6]]
+```
+
+---
+
+# Random Numbers
+
+Random numbers are heavily used in Machine Learning.
+
+---
+
+Random float:
+
+```python
+np.random.rand()
+```
+
+---
+
+Random array:
+
+```python
+np.random.rand(3,3)
+```
+
+---
+
+Random integer:
+
+```python
+np.random.randint(1,10)
+```
+
+---
+
+Set seed:
+
+```python
+np.random.seed(42)
+```
+
+Ensures reproducible results.
+
+---
+
+# Boolean Indexing
+
+Very useful for filtering.
+
+```python
+arr = np.array([10,20,30,40,50])
+```
+
+Select values greater than 25:
+
+```python
+arr[arr > 25]
+```
+
+Output:
+
+```python
+[30 40 50]
+```
+
+---
+
+# Broadcasting
+
+One of NumPy's most powerful features.
+
+```python
+arr = np.array([1,2,3])
+
+arr + 5
+```
+
+Output:
+
+```python
+[6 7 8]
+```
+
+NumPy automatically applies the operation to every element.
+
+---
+
+# Linear Algebra
+
+Machine Learning relies heavily on Linear Algebra.
+
+---
+
+## Dot Product
+
+```python
+a = np.array([1,2,3])
+b = np.array([4,5,6])
+
+np.dot(a,b)
+```
+
+Output:
+
+```python
+32
+```
+
+Calculation:
+
+```text
+1×4 + 2×5 + 3×6
+```
+
+---
+
+## Matrix Multiplication
+
+```python
+A @ B
+```
+
+or
+
+```python
+np.matmul(A,B)
+```
+
+---
+
+## Transpose
+
+Rows become columns.
+
+```python
+A.T
+```
+
+Example:
+
+```text
+1 2 3
+4 5 6
+```
+
+becomes
+
+```text
+1 4
+2 5
+3 6
+```
+
+---
+
+# NumPy in Machine Learning
+
+Almost every ML workflow uses NumPy.
 
 Examples:
-```python
-np.zeros((2,3))
-np.linspace(0,1,5)
-rng = np.random.default_rng(42)
-rng.normal(size=(3,3))
-```
 
----
+* Feature matrices
+* Mathematical calculations
+* Neural network computations
+* Data preprocessing
+* Linear Algebra operations
 
-## SECTION 2 — Array Operations
-
-### 5. Indexing & Slicing
-
-Get values with indexes: `arr[i]` or `arr[i,j]` for 2D.
-Use `arr[-1]` for the last item. Slice with `arr[1:4]` or `arr[:, :2]`.
-
-Note: slices often return views (not copies).
-
-Use indexing to pick batches or time windows.
-
----
-
-- ### 6. Reshaping Arrays
-
-- `reshape(new_shape)` changes the view of data without copying when possible.
-- `flatten()` gives a copy of data as 1D.
-- `ravel()` is like flatten but tries to return a view.
-- `arr.T` or `transpose()` swaps axes.
-
-Shapes must match what functions expect (e.g., `[batch, features]`).
-
----
-
-### 7. Array Mathematics
-
-Use `+ - * / **` for elementwise math.
-Use `np.dot(A, B)` or `A @ B` for matrix multiply.
-
-Broadcasting makes shapes match automatically when rules allow it. It saves writing loops.
-
-Always prefer vectorized ops over Python loops for big speed gains.
-
----
-
-## SECTION 3 — Statistical Operations
-
-### 8. Statistical Functions
-
-Common stats: `np.mean`, `np.median`, `np.std`, `np.var`, `np.sum`, `np.min`, `np.max`.
-Use `np.percentile` or `np.quantile` for percentiles.
-
-These help compute normalization and summaries for datasets.
-
----
-
-### 9. Aggregation Functions
-
-`axis=0` works down rows (gives column results). `axis=1` works across columns (gives row results).
+Scikit-Learn models often expect NumPy arrays as input.
 
 Example:
+
 ```python
-arr.sum(axis=0)
-arr.mean(axis=1)
+X = np.array([
+    [1200,2],
+    [1500,3],
+    [1800,4]
+])
+
+y = np.array([
+    200000,
+    250000,
+    300000
+])
 ```
 
-Check shapes when using axis to avoid mistakes.
+Here:
 
----
-
-## SECTION 4 — Matrix Operations
-
-### 10. Matrix Fundamentals
-
-Matrix multiply: `np.dot(A, B)` or `A @ B`.
-Elementwise multiply is `A * B`.
-
-Example:
-```python
-A = np.eye(3)
-B = np.ones((3,3))
-C = A @ B
-```
-
----
-
-### 11. Linear Algebra with NumPy
-
-Find inverse, determinant, eigenvalues via `np.linalg` (e.g., `np.linalg.inv`, `np.linalg.eig`).
-Prefer `np.linalg.solve(A, b)` over `inv(A) @ b` for stability.
-
-Linear algebra is the math behind many ML methods.
-
----
-
-## SECTION 5 — Broadcasting
-
-### 12. Broadcasting
-
-Broadcasting lets arrays with different shapes work together if they follow simple rules (align trailing dims, or dim=1).
-
-Example:
-```python
-X = np.ones((3,4))
-v = np.array([1,2,3,4])  # shape (4,)
-X + v  # v is used for each row
-```
-
-Broadcasting keeps code short and fast. Check shapes to avoid surprises.
-
----
-
-## SECTION 6 — Advanced Array Manipulation
-
-### 13. Stacking Arrays
-
-Combine arrays with `np.hstack`, `np.vstack`, `np.concatenate`, or `np.stack`.
-
-Example:
-```python
-np.vstack([a, b])
-np.concatenate([a, b], axis=0)
+```text
+X → Features
+y → Target
 ```
 
 ---
 
-### 14. Filtering Arrays
+# Common Interview Questions
 
-Use boolean masks to pick values:
+## Difference Between List and NumPy Array
+
+List:
+
+* Slower
+* Flexible
+* General purpose
+
+NumPy Array:
+
+* Faster
+* Memory efficient
+* Numerical computations
+
+---
+
+## What is Broadcasting?
+
+Automatic expansion of arrays during operations.
+
+---
+
+## What is Vectorization?
+
+Performing operations on entire arrays without loops.
+
+---
+
+## Why is NumPy Fast?
+
+Because most operations are implemented in optimized C code.
+
+---
+
+# Common Beginner Mistakes
+
+## Forgetting to Import
+
 ```python
-mask = arr > 0
-arr[mask]
-np.where(arr > 0, arr, 0)
-```
-
-Use `&` and `|` with parentheses for multiple conditions.
-
-Use masking to clean or filter data.
-
----
-
-### 15. Sorting & Searching
-
-Useful functions: `np.sort`, `np.argsort`, `np.unique`, `np.searchsorted`, `np.argmax`, `np.argmin`.
-
-Use these for top-k selection, thresholds, and deduplication.
-
----
-
-## SECTION 7 — Random Numbers
-
-### 16. Random Module
-
-Use the new Generator API:
-```python
-rng = np.random.default_rng(123)
-rng.integers(0, 10, size=(3,))
-rng.random((2,2))
-```
-
-Set a seed so experiments can be repeated. Randomness is used for shuffling and initialization.
-
----
-
-## SECTION 8 — Performance
-
-### 17. Why NumPy is Fast
-
-NumPy runs math in C, not Python. This makes it much faster. It also uses memory efficiently and links to fast math libraries.
-
-Measure speed with `timeit`.
-
-### 18. Memory Optimization
-
-Slicing usually returns a view (same data, different view). Use `.copy()` to make a real copy.
-
-Avoid extra copies and keep data types (`dtype`) consistent to save memory.
-
----
-
-## SECTION 9 — NumPy for Machine Learning
-
-### 19. Feature Matrices
-
-Data is usually `X` with shape `(n_samples, n_features)` and labels `y` with shape `(n_samples,)`.
-
-### 20. Math Basics
-
-Vectors, matrices, and tensors are basic data structures you will use for ML.
-
-### 21. Data Preprocessing
-
-Handle missing values with `np.nan` and `np.isnan()`.
-Normalize: `(x - mean) / std`. Scale with min-max.
-
-Example:
-```python
-mean = X.mean(axis=0)
-std = X.std(axis=0)
-X_norm = (X - mean) / (std + 1e-8)
+import numpy as np
 ```
 
 ---
 
-## SECTION 10 — Best Practices
+## Shape Mismatch
 
-### 22. Clean NumPy Coding
-
-Use clear names like `X`, `y`, `weights`. Prefer vectorized operations over loops. Pick `float32` or `float64` according to memory and precision needs.
-
-### 23. Common Beginner Mistakes
-
-Check `shape` often. Watch broadcasting rules. Use `.copy()` when you need a separate array.
-
----
-
-## SECTION 11 — Mini Projects
-
-Simple projects:
-- Student marks analyzer
-- Expense stats calculator
-
-Intermediate:
-- Dataset summary tool
-- Image pixel analyzer
-
-AI projects:
-- Feature matrix builder
-- Linear regression from scratch (closed form and gradient descent)
-
-Linear regression example (closed form):
 ```python
-X = np.column_stack([np.ones(n), X_raw])  # add bias column
-w = np.linalg.pinv(X.T @ X) @ X.T @ y
+A + B
+```
+
+fails if shapes are incompatible.
+
+Always check:
+
+```python
+A.shape
+B.shape
 ```
 
 ---
 
-## SECTION 12 — NumPy in Real AI Systems
+## Confusing Lists with Arrays
 
-NumPy underpins data pipelines, model prototypes, numerical experiments, and research code. It integrates with libraries like Pandas, scikit-learn, PyTorch, TensorFlow, and OpenCV.
-
----
-
-
-## SECTION 13 — Revision Cheatsheet
-
-Key functions:
 ```python
-np.array, np.zeros, np.ones, np.arange, np.linspace
-np.reshape, np.mean, np.sum, np.max, np.min
-np.dot, np.where, np.random.default_rng
+[1,2,3] * 2
 ```
 
-Key concepts: arrays, shapes, broadcasting, vectorization, views vs copies, matrix multiply.
+Output:
+
+```python
+[1,2,3,1,2,3]
+```
+
+But:
+
+```python
+np.array([1,2,3]) * 2
+```
+
+Output:
+
+```python
+[2 4 6]
+```
+
+Very different behavior.
 
 ---
+
+# NumPy Cheat Sheet
+
+Create Array:
+
+```python
+np.array()
+```
+
+Zeros:
+
+```python
+np.zeros()
+```
+
+Ones:
+
+```python
+np.ones()
+```
+
+Range:
+
+```python
+np.arange()
+```
+
+Even Spacing:
+
+```python
+np.linspace()
+```
+
+Shape:
+
+```python
+arr.shape
+```
+
+Dimensions:
+
+```python
+arr.ndim
+```
+
+Reshape:
+
+```python
+arr.reshape()
+```
+
+Flatten:
+
+```python
+arr.flatten()
+```
+
+Mean:
+
+```python
+np.mean()
+```
+
+Sum:
+
+```python
+np.sum()
+```
+
+Standard Deviation:
+
+```python
+np.std()
+```
+
+Dot Product:
+
+```python
+np.dot()
+```
+
+Transpose:
+
+```python
+A.T
+```
+
+Random Numbers:
+
+```python
+np.random.rand()
+```
+
+---
+
+# Final Thoughts
+
+NumPy is the mathematical engine behind modern Data Science and Machine Learning.
+
+A good learning path is:
+
+```text
+Python
+   ↓
+NumPy
+   ↓
+Pandas
+   ↓
+Matplotlib
+   ↓
+Scikit-Learn
+   ↓
+Machine Learning
+```
+
+Master NumPy first, and every other data science library will become easier to understand.
