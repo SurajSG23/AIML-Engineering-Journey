@@ -5,10 +5,6 @@
 > In Machine Learning and Deep Learning, calculus helps us answer one important question:
 >
 > **How should we change our model to make it better?**
->
-> The goal of this guide is not to make you a mathematician.
->
-> The goal is to help you understand the calculus concepts used in AI and Machine Learning.
 
 ---
 

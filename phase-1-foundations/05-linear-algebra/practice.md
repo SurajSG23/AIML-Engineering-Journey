@@ -3,11 +3,6 @@
 > Linear Algebra is the language of Machine Learning and Deep Learning.
 >
 > Every ML model, neural network, image, dataset, and embedding eventually becomes numbers arranged in vectors and matrices.
->
-> The goal of this guide is not to turn you into a mathematician.
->
-> The goal is to help you understand Linear Algebra well enough to confidently study Machine Learning and Deep Learning.
-
 ---
 
 # Why Learn Linear Algebra?
