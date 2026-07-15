@@ -1,3 +1,0 @@
-# Neural Networks from Scratch Practice
-
-Use this file for notes, exercises, and implementation links.
